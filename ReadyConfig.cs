@@ -123,6 +123,7 @@ namespace ReadyConfig
                 {
                     PreGameVoteController.timerStartCondition =
                         RoR2.VoteController.TimerStartCondition.WhileAllVotesReceived;
+                    PreGameVoteController.timeoutDuration = PreGameVoteController.minimumTimeBeforeProcessing;
                 }
             }
 
