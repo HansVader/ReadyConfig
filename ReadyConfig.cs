@@ -45,12 +45,6 @@ namespace ReadyConfig
         {
             Log.Init(Logger);
 
-            if (UnityEngine.Application.isBatchMode)
-            {
-                Log.LogWarning("Running on dedicated server, " + nameof(Awake) + " cancelled");
-                return;
-            }
-
             EnableGameOverChanges = Config.Bind<bool>("GameOver", "EnableGameOverChanges", false,
                 "Enable or Disable all features related to the GameOver screen");
             GameOverRequiresAllReady = Config.Bind<bool>("GameOver", "GameOverRequiresAllReady", true,
