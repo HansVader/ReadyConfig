@@ -105,6 +105,11 @@ namespace ReadyConfig
         {
             orig(self);
 
+            if (RoR2Application.isInSinglePlayer)
+            {
+                return;
+            }
+            
             if (!UnityEngine.Application.isBatchMode)
             {
                 On.RoR2.VoteController.ReceiveUserVote += LobbyVoteControllerOnReceiveUserVote;
@@ -132,6 +137,12 @@ namespace ReadyConfig
 
         private void PreGameControllerOnOnDisable(PreGameController.orig_OnDisable orig, RoR2.PreGameController self)
         {
+            if (RoR2Application.isInSinglePlayer)
+            {
+                orig(self);
+                return;
+            }
+            
             if (!UnityEngine.Application.isBatchMode)
             {
                 On.RoR2.VoteController.ReceiveUserVote -= LobbyVoteControllerOnReceiveUserVote;
@@ -147,7 +158,12 @@ namespace ReadyConfig
         private void GameOverControllerOnOnEnable(GameOverController.orig_OnEnable orig, RoR2.GameOverController self)
         {
             orig(self);
-
+            
+            if (RoR2Application.isInSinglePlayer)
+            {
+                return;
+            }
+            
             GameOverVoteController = self.GetComponent<RoR2.VoteController>();
             if (UnityEngine.Networking.NetworkServer.active)
             {
@@ -164,6 +180,12 @@ namespace ReadyConfig
 
         private void GameOverControllerOnOnDisable(GameOverController.orig_OnDisable orig, RoR2.GameOverController self)
         {
+            if (RoR2Application.isInSinglePlayer)
+            {
+                orig(self);
+                return;
+            }
+            
             GameOverVoteController = null;
 
             orig(self);
@@ -174,6 +196,11 @@ namespace ReadyConfig
         private void CreditsControllerOnOnEnable(CreditsController.orig_OnEnable orig, RoR2.CreditsController self)
         {
             orig(self);
+            
+            if (RoR2Application.isInSinglePlayer)
+            {
+                return;
+            }
 
             CreditsVoteController = self.GetComponent<RoR2.VoteController>();
             if (UnityEngine.Networking.NetworkServer.active)
@@ -191,6 +218,12 @@ namespace ReadyConfig
 
         private void CreditsControllerOnOnDisable(CreditsController.orig_OnDisable orig, RoR2.CreditsController self)
         {
+            if (RoR2Application.isInSinglePlayer)
+            {
+                orig(self);
+                return;
+            }
+            
             CreditsVoteController = null;
 
             orig(self);
