@@ -15,7 +15,7 @@ namespace ReadyConfig
     //[BepInDependency(R2API.R2API.PluginGUID)]
     [BepInPlugin(PluginGUID, PluginName, PluginVersion)]
     //[R2APISubmoduleDependency(nameof(ItemAPI), nameof(LanguageAPI))]
-    public class ExamplePlugin : BaseUnityPlugin
+    public class ReadyConfig : BaseUnityPlugin
     {
         public const string PluginGUID = PluginAuthor + "." + PluginName;
         public const string PluginAuthor = "Maci";
